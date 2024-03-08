@@ -1,4 +1,4 @@
-const arr = [2, "11", 3, "a2", false, 5, 7, 1, NaN];
+const arr = [2, "11", 3, "a2", false, 5, 7, 1];
 const arrDua = [2, 3, 0, 5, 7, 8, true, false];
 
 // foreach
@@ -13,10 +13,8 @@ const sumNumbers = (value) => {
     });
     return sum;
   }
-  return "harus array";
+  return "nilai harus berupa array";
 };
-
-console.log(sumNumbers(string));
 
 console.log(`Original array: ${arr}`);
 console.log(`Sum all numbers: ${sumNumbers(arr)}`);
@@ -26,7 +24,11 @@ console.log(`Sum all numbers: ${sumNumbers(arrDua)}`);
 // filter & reduce;
 console.log("\n---dengan filter & reduce---");
 const sumNumbersFilterReduce = (arr) =>
-  arr.filter((e) => typeof e === "number" && e).reduce((sum, e) => sum + e, 0);
+  Array.isArray(arr)
+    ? arr
+        .filter((e) => typeof e === "number" && e)
+        .reduce((sum, e) => sum + e, 0)
+    : "nilai harus berupa array";
 
 console.log(`Original array: ${arr}`);
 console.log(`Sum all numbers: ${sumNumbersFilterReduce(arr)}`);
